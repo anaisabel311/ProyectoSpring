@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <beans xmlns="http://www.springframework.org/schema/beans" 
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+     xmlns:context="http://www.springframework.org/schema/context"
+     xsi:schemaLocation="http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+     http://www.springframework.org/schema/context 
+     http://www.springframework.org/schema/context/spring-context-3.0.xsd" >
+     
+  <bean id="boton" class="pojoManiqui.Boton" scope="prototype">
+ 		<constructor-arg value="1" />
+ 		<constructor-arg value="redondo" />
+ 		<constructor-arg value="dorado" />
+ 		<constructor-arg value="22 mm" />
+  </bean>
+	
+  <bean id="pantalon1" class="pojoManiqui.Pantalon"
+ 	depends-on="boton">
+ 		<constructor-arg value="1" />
+ 		<constructor-arg value="vaquero" />
+ 		<constructor-arg value="l" />
+ 		<constructor-arg value="30" />
+ 		<constructor-arg ref="boton" />
+  </bean>
+  
+  <bean id="pantalon2" class="pojoManiqui.Pantalon"
+ 	depends-on="boton">
+ 		<constructor-arg value="2" />
+ 		<constructor-arg value="algodón" />
+ 		<constructor-arg value="l" />
+ 		<constructor-arg value="30" />
+ 		<constructor-arg ref="boton" />
+  </bean>		
+	
+	
+  <bean id="camisa1" class="pojoManiqui.Camisa">
+ 		<constructor-arg value="1" />
+ 		<constructor-arg value="Rayas Azul y Blanca" />
+ 		<constructor-arg value="l" />
+ 		<constructor-arg value="30" />
+ 		<property name="botones"> 
+		 <list> 
+			<ref bean ="boton"/>
+			<ref bean ="boton"/>
+			<ref bean ="boton"/>
+			<ref bean ="boton"/>
+			<ref bean ="boton"/>
+			<ref bean ="boton"/>
+		</list> 
+	 </property>
+	</bean> 
+	 
+	<bean id="maniqui1" class="pojoManiqui.Maniqui">
+	
+		<constructor-arg value="1"/> 
+		<constructor-arg ref="camisa1" />
+		<constructor-arg ref="pantalon1" />
+	</bean>	
+	
+	
+	<bean id="maniqui2" class="pojoManiqui.Maniqui">
+	
+		<constructor-arg value="2"/> 
+		<constructor-arg ref="camisa1" />
+		<constructor-arg ref="pantalon2" />
+	</bean>	
+	
+	<bean id="tienda" class="pojoManiqui.Tienda" depends-on="maniqui1, maniqui2">
+		<constructor-arg value="Moda MariPepa"/>
+		 <property name="maniquies"> 
+		 <map> 
+			 <entry key="mani1" value-ref="maniqui1"/> 
+			 <entry key="mani2" value-ref="maniqui2"/> 
+		</map> 
+	 </property> 
+	</bean>	
+	
+</beans>
