@@ -1,28 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-	<bean id="beanGenerom" abstract="true">
+	<bean id="beanGeneroM" abstract="true">
 		<property name="genero" value="Género Masculino"/>
 	</bean>
 	
 	
-	<bean id="beanGenerof" abstract="true">
+	<bean id="beanGeneroF" abstract="true">
 		<property name="genero" value="Género Femenino"/>
 	</bean>
 
-
-
-	<bean id="persona1" class="herenciaGenero.BeanPersonaHerencia" parent="beanGenerom"> 
+	<bean id="persona1" class="herenciaGenero.BeanPersonaHerencia" scope="prototype" parent="beanGeneroM"> 
 		<constructor-arg name="nombre" value="Nombre1"/>
 		<constructor-arg name="apellidos" value="Apellidos1"/>
 		<constructor-arg name="dni" value="dni1"/>
+		<constructor-arg name="tipodeSuscripcion" value="free"/>
 	</bean>
 
-	<bean id="persona2" class="herenciaGenero.BeanPersonaHerencia" parent="beanGenerof"> 
+	<bean id="persona2" class="herenciaGenero.BeanPersonaHerencia" scope="prototype" parent="beanGeneroF"> 
 		<constructor-arg name="nombre" value="Nombre2"/>
 		<constructor-arg name="apellidos" value="Apellidos2"/>
 		<constructor-arg name="dni" value="dni2"/>
+		<constructor-arg name="tipodeSuscripcion" value="basic"/>
 		
 	</bean>
+	
+	<bean id="persona3" class="herenciaGenero.BeanPersonaHerencia" scope="prototype" parent="beanGeneroF"> 
+		<constructor-arg name="nombre" value="Nombre3"/>
+		<constructor-arg name="apellidos" value="Apellidos3"/>
+		<constructor-arg name="dni" value="dni3"/>
+		<constructor-arg name="tipodeSuscripcion" value="premium"/>
+		
+	</bean>
+	
+	<bean id="prensa" class="herenciaGenero.BeanServicioPrensa" lazy-init="true">
+	<property name="listprensa"> 
+		 <list> 
+			 <value>"Periodico1"</value> 
+			 <value>"Periodico2"</value> 
+			 <value>"Periodico3"</value> 
+			 <value>"Periodico4"</value> 
+			 <value>"Periodico5"</value> 
+			 <value>"Periodico6"</value> 
+			 <value>"Periodico7"</value> 
+		 </list> 
+	 </property> 
+	
+	</bean> 
 
 </beans> 
