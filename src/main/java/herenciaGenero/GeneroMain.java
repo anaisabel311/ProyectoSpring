@@ -10,7 +10,7 @@ public class GeneroMain {
 		ApplicationContext context=new ClassPathXmlApplicationContext("HerenciaGenero.xml");
 		
 		
-		//BeanPersonaHerencia p1 =(BeanPersonaHerencia)context.getBean("persona1");
+		BeanPersonaHerencia p1 =(BeanPersonaHerencia)context.getBean("persona1");
 		//System.out.println(p1);
 		BeanPersonaHerencia p2 =(BeanPersonaHerencia)context.getBean("persona2");
 		System.out.println(p2);
