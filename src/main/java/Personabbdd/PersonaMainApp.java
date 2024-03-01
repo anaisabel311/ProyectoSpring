@@ -20,15 +20,11 @@ public class PersonaMainApp {
 //		
 //		command.guardarPersona(persona);
 		
-//		usuario=new Usuario();
-//		usuario.setUsuario("Alicia");
-//		usuario.setContrasena("root");
-//		command.guardarUsuario(usuario);
+
 //		
 		PersonaEntity usuario2=command.getPersona("Juan");
 		System.out.println(usuario2);
 		System.out.println(command.mostrarPrensa(usuario2.getTipoSuscripcion()));
-//		System.out.println("Contrase�a de "+usuario.getUsuario()+" -> "+usuario.getContrasena());
-//		System.out.println("Done.");
+
 	}
 }
